@@ -1,0 +1,9 @@
+path: E:\Work\KHDL\NHANDANGCACBENHVEDATRENDONGVA
+
+train: train/images
+val: valid/images
+test: test/images
+
+nc: 8
+names: ['viem da do vi khuan (cho)', 'di ung bo chet', 'nhiem nam (cho)', 'da khoe manh', 'cho khoe manh', 'qua man (cho)', 'hac lao', 'ghe']
+

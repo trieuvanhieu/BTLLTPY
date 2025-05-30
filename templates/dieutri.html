@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Phác đồ điều trị</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dieutri.css') }}">
+</head>
+<body>
+
+<h2 class="title">Phác đồ điều trị cho {{ benh }}</h2>
+
+{% if lieu_trinh %}
+  {% for plan in lieu_trinh %}
+    <div class="phac-do">
+      <h3 class="plan-name">{{ plan.name }}</h3>
+      <p><strong>💰 Giá:</strong> {{ plan.price }}</p>
+      <p><strong>📄 Mô tả:</strong> {{ plan.description }}</p>
+      <p><strong>🩺 Các bước điều trị:</strong></p>
+      <ul class="steps-list">
+        {% for step in plan.steps %}
+          <li>🌿 {{ step }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  {% endfor %}
+{% else %}
+  <p class="no-plan">Không tìm thấy phác đồ điều trị cho bệnh này.</p>
+{% endif %}
+
+</body>
+</html>

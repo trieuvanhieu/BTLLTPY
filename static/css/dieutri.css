@@ -1,0 +1,96 @@
+/* Reset cơ bản */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #e9fbea, #c8f5d4);
+    color: #2c4730;
+    padding: 20px;
+    min-height: 100vh;
+}
+
+/* Tiêu đề trang */
+.title {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: #2e7d32;
+    margin-bottom: 40px;
+    text-shadow: 1px 1px 8px rgba(46, 125, 50, 0.3);
+}
+
+/* Khung phác đồ */
+.phac-do {
+    background-color: #f4fff6;
+    border-left: 8px solid #81c784;
+    border-radius: 20px;
+    box-shadow: 0 12px 28px rgba(56, 142, 60, 0.25);
+    padding: 28px 34px;
+    margin-bottom: 40px;
+    max-width: 860px;
+    margin-left: auto;
+    margin-right: auto;
+    transition: transform 0.3s ease;
+}
+
+.phac-do:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 36px rgba(56, 142, 60, 0.35);
+}
+
+/* Tên gói điều trị */
+.plan-name {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #388e3c;
+    margin-bottom: 16px;
+}
+
+/* Mô tả và giá */
+.phac-do p {
+    font-size: 1.1rem;
+    margin: 10px 0;
+    color: #2c4730;
+    line-height: 1.5;
+}
+
+/* Danh sách các bước */
+.steps-list {
+    list-style-type: none;
+    padding-left: 20px;
+    margin-top: 14px;
+}
+
+.steps-list li {
+    margin-bottom: 8px;
+    font-size: 1.05rem;
+    color: #1b5e20;
+    padding-left: 6px;
+}
+
+/* Nếu không có phác đồ */
+.no-plan {
+    text-align: center;
+    font-size: 1.3rem;
+    margin-top: 40px;
+    color: #d32f2f;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .phac-do {
+        padding: 20px;
+    }
+
+    .title {
+        font-size: 2rem;
+    }
+
+    .plan-name {
+        font-size: 1.5rem;
+    }
+}

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>🐾 Nhận diện bệnh da trên động vật 🐾</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <!-- Nền sticker chó mèo -->
+    <div class="background-stickers">
+        <img src="{{ url_for('static', filename='img/dog1.png') }}" class="sticker top-left" alt="dog sticker">
+        <img src="{{ url_for('static', filename='img/cat1.png') }}" class="sticker bottom-right" alt="cat sticker">
+    </div>
+
+    <div class="container">
+        <h1>🐶 Hệ thống chẩn đoán bệnh ngoài da cho động vật 🐱</h1>
+
+        <form method="POST" enctype="multipart/form-data">
+            <label for="image">📷 Tải ảnh lên:</label>
+            <input type="file" name="image" id="image" accept="image/*" required>
+
+            <label for="symptoms">🩺 Chọn biểu hiện (có thể chọn nhiều):</label>
+            <select name="symptoms[]" id="symptoms" multiple required>
+                <optgroup label="Viêm da do vi khuẩn">
+                    <option value="mụn mủ">Có mụn mủ nhỏ</option>
+                    <option value="da đỏ">Da đỏ, sưng</option>
+                    <option value="rụng lông">Rụng lông từng mảng</option>
+                </optgroup>
+                <optgroup label="Dị ứng bọ chét">
+                    <option value="gãi nhiều">Gãi nhiều</option>
+                    <option value="bọ chét">Có bọ chét</option>
+                </optgroup>
+                <optgroup label="Nhiễm nấm">
+                    <option value="ngứa dai dẳng">Ngứa dai dẳng</option>
+                    <option value="vảy gàu">Có vảy, gàu</option>
+                </optgroup>
+                <optgroup label="Hắc lào">
+                    <option value="vòng tròn đỏ">Vết tròn đỏ có rìa nổi bật</option>
+                </optgroup>
+                <optgroup label="Ghẻ">
+                    <option value="da đóng vảy">Da đóng vảy, dày sừng</option>
+                    <option value="ngứa nghiêm trọng">Ngứa nghiêm trọng</option>
+                </optgroup>
+                <optgroup label="Quá mẫn">
+                    <option value="phát ban">Phát ban</option>
+                    <option value="mẩn đỏ">Mẩn đỏ</option>
+                </optgroup>
+            </select>
+
+            <button type="submit">Chẩn đoán</button>
+        </form>
+
+        {% if image_filename %}
+            <div class="result">
+                <h2>Kết quả: {{ result }}</h2>
+                <p>Gợi ý điều trị: <strong>{{ advice }}</strong></p>
+
+                <div class="image-wrapper">
+                    <div>
+                        <h3>Ảnh gốc:</h3>
+                        <img src="{{ url_for('static', filename='uploads/' + image_filename) }}" alt="Ảnh gốc">
+                    </div>
+                    <div>
+                        <h3>Ảnh sau khi nhận diện:</h3>
+                        <img src="{{ url_for('static', filename='results/' + image_filename) }}" alt="Ảnh nhận diện">
+                    </div>
+                </div>
+
+                <form action="{{ url_for('dieutri') }}" method="post">
+                    <input type="hidden" name="benh" value="{{ result }}">
+                    <button type="submit">Điều trị</button>
+                </form>
+            </div>
+        {% endif %}
+    </div>
+
+</body>
+</html>
